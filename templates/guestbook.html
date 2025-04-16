@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gästebuch – Portfolio</title>
+  <style>
+      * {
+        box-sizing: border-box;
+      }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at center, #0f0c29, #302b63, #24243e);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+    }
+
+    .navbar {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 30px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+
+        .navbar h1 {
+          font-size: 1.5rem;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+
+        .navbar a {
+          color: white;
+          text-decoration: none;
+          margin-left: 25px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .navbar a:hover {
+          color: #00fff7;
+          text-shadow: 0 0 10px #00fff7;
+        }
+
+    .section {
+      padding: 60px 20px 30px;
+      max-width: 800px;
+      margin: 100px auto 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    .neoinput {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 15px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .neoinput:focus {
+      border-color: #00fff7;
+      box-shadow: 0 0 10px #00fff7;
+    }
+
+    .neobutton {
+      background: linear-gradient(135deg, #00fff7, #4facfe);
+      color: #000;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00fff7;
+      transition: 0.3s;
+    }
+
+    .neobutton:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00fff7;
+    }
+
+    .entry {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    }
+
+    hr {
+      border-color: rgba(255, 255, 255, 0.1);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Portfolio</h1>
+    <div>
+        <a href="{{ url_for('app_routes.index') }}">Dashboard</a>
+    </div>
+</div>
+
+  <div class="section" id="guestbook">
+    <div class="card">
+      <h2>Gästebuch</h2>
+      <form method="POST" action="{{ url_for('app_routes.guestbook') }}">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" class="neoinput" required><br>
+
+        <label for="message">Nachricht:</label><br>
+        <textarea id="message" name="message" rows="4" class="neoinput" required></textarea><br>
+
+        <button type="submit" class="neobutton">Eintrag hinzufügen</button>
+      </form>
+
+      <hr />
+
+      <h3>Einträge</h3>
+      {% for entry in entries %}
+        <div class="entry">
+          <p>{{ entry }}</p>
+        </div>
+      {% else %}
+        <p>Noch keine Einträge.</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
+
+

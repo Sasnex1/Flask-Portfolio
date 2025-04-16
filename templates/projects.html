@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NeoProjects – by Kevin</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          background: radial-gradient(ellipse at center, #0f0c29, #302b63, #24243e);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: white;
+          scroll-behavior: smooth;
+        }
+
+        .navbar {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 30px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+
+        .navbar h1 {
+          font-size: 1.5rem;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+
+        .navbar a {
+          color: white;
+          text-decoration: none;
+          margin-left: 25px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .navbar a:hover {
+          color: #00fff7;
+          text-shadow: 0 0 10px #00fff7;
+        }
+
+        .section {
+          padding: 100px 20px 30px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .section h2 {
+          text-align: center;
+          font-size: 2.3rem;
+          margin-bottom: 25px;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          border-radius: 20px;
+          padding: 25px 30px;
+          margin-top: 30px;
+          box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+          animation: float 6s ease-in-out infinite;
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .card p {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        a.button {
+          display: inline-block;
+          margin-top: 15px;
+          padding: 10px 25px;
+          background: linear-gradient(135deg, #00fff7, #4facfe);
+          color: #000;
+          font-weight: bold;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: 0.3s;
+          box-shadow: 0 0 10px #00fff7;
+        }
+
+        a.button:hover {
+          box-shadow: 0 0 20px #00fff7;
+          transform: scale(1.05);
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Downloads</h1>
+    <div>
+        <a href="{{ url_for('app_routes.index') }}">Dashboard</a>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Meine Projekte</h2>
+
+    <div class="card">
+        <h3>Minecraft ServerSystem (Unfertig) [JAVA]</h3>
+        <p>Ein ServerSystem mit verschiedenen Funktionen</p>
+        <a href="{{ url_for('static', filename='downloads/ServerSystem.jar') }}" class="button" download>Download</a>
+    </div>
+
+    <div class="card">
+        <h3>NeoNet-Bank</h3>
+        <p>Bank-Simulation mit Login, Überweisungssystem & User-Verwaltung – Flask powered.</p>
+        <a href="link-zur-webseite" class="button" download>Anschauen</a>
+    </div>
+
+    <div class="card">
+        <h3>Game Server Control Panel</h3>
+        <p>Dieses Projekt ist in planung</p>
+        <a href="#" class="button">Soon</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Kevin – Protfolio</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        #about {
+            padding-top: 100px;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          background: radial-gradient(ellipse at center, #0f0c29, #302b63, #24243e);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: white;
+          scroll-behavior: smooth;
+        }
+
+        .navbar {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 30px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+
+        .navbar h1 {
+          font-size: 1.5rem;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+
+        .navbar a {
+          color: white;
+          text-decoration: none;
+          margin-left: 25px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .navbar a:hover {
+          color: #00fff7;
+          text-shadow: 0 0 10px #00fff7;
+        }
+
+        .section {
+          padding: 30px 20px 20px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .section h2 {
+          text-align: center;
+          font-size: 2.3rem;
+          margin-bottom: 25px;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          border-radius: 20px;
+          padding: 25px 30px;
+          margin-top: 20px; /* vorher 80px */
+          box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+          animation: float 6s ease-in-out infinite;
+          transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .card p, .card ul {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        ul {
+          padding-left: 20px;
+        }
+
+        a.button {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 10px 25px;
+          background: linear-gradient(135deg, #00fff7, #4facfe);
+          color: #000;
+          font-weight: bold;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: 0.3s;
+          box-shadow: 0 0 10px #00fff7;
+        }
+
+        a.button:hover {
+          box-shadow: 0 0 20px #00fff7;
+          transform: scale(1.05);
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .bar {
+          width: 100%;
+          height: 20px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          margin: 8px 0 16px;
+          overflow: hidden;
+          box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+        }
+
+        .bar .fill {
+          height: 100%;
+          background: linear-gradient(90deg, #00fff7, #4facfe);
+          border-radius: 10px;
+          box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+          transition: width 0.6s ease-in-out;
+        }
+
+        .roadmap-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.roadmap-list li {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 4px solid #00fff7;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.badge.done {
+  background: #00ff99;
+  color: #000;
+}
+
+.badge.inprogress {
+  background: #ffcc00;
+  color: #000;
+}
+
+.badge.planned {
+  background: #4facfe;
+  color: #000;
+}
+
+        <style>
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 20px;
+    }
+
+    .navbar h1 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .navbar a {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .section {
+      padding: 50px 15px 20px;
+    }
+
+    .card {
+      padding: 20px 15px;
+      margin-top: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+    }
+
+    .card p, .card ul, .card li {
+      font-size: 0.95rem;
+    }
+
+    .bar {
+      height: 16px;
+    }
+
+    a.button {
+      font-size: 0.9rem;
+      padding: 8px 20px;
+    }
+
+    .roadmap-list li {
+      font-size: 0.95rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      padding: 2px 6px;
+    }
+  }
+</style>
+
+
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Portfolio</h1>
+    <div>
+        <a href="#skills">Skills</a>
+        <a href="{{ url_for('app_routes.projects') }}">Projekte</a>
+        <a href="{{ url_for('app_routes.guestbook') }}">Gästebuch</a>
+        <a href="#contact">Kontakt</a>
+    </div>
+</div>
+
+<div class="section" id="about">
+    <div class="card">
+        <h2>Über Mich</h2>
+        <p>Hi, Mein Name ist Kevin, ich bin leidenschaftlicher Hobby Programmierer,
+            und Programmiere die verschiedenste dinge💻⚡</p>
+    </div>
+</div>
+
+<div class="section" id="skills">
+    <div class="card">
+        <h2>Skills</h2>
+        <ul>
+            <h1>Python</h1>
+            <div class="bar">
+                <div class="fill" style="width: 35%"></div>
+            </div>
+            
+            <h1>Java</h1>
+            <div class="bar">
+                <div class="fill" style="width: 60%"></div>
+            </div>
+
+            <h1>C#</h1>
+            <div class="bar">
+                <div class="fill" style="width: 80%"></div>
+            </div>
+
+            <h1>html,css</h1>
+            <div class="bar">
+                <div class="fill" style="width: 10%"></div>
+            </div>
+            <li>🕹️ Game Server, Minecraft Plugin Programmierung, uvm</li>
+            <li>🌐 Flask Webentwicklung</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section" id="projects">
+    <div class="card">
+        <h2>Projekte</h2>
+        <p><b>NeoNet-Bank:</b> Eigene Bank-Simulation mit Login-System, Kontoführung und Überweisungssystem.</p>
+        <p><b>Minecraft-Plugin:</b>Ein ServerSystem das den Minecraft Server verbessern sollte (unfertig)</p>
+        <a href="{{ url_for('app_routes.projects') }}" class="button">Projekt ansehen</a>
+    </div>
+</div>
+
+<div class="section" id="server">
+  <div class="card">
+    <h2>GameServer-status</h2>
+    {% if server_online %}
+      <p class="status online">Minecraft Server: <span style="color:#00ff7f;">Online</span></p>
+    {% else %}
+      <p class="status offline">Minecraft Server: <span style="color:#ff4c4c;">Offline</span></p>
+    {% endif %}
+  </div>
+</div>
+
+<div class="section" id="roadmap">
+  <div class="card">
+    <h2>Roadmap</h2>
+    <ul class="roadmap-list">
+      <li><span class="badge done">✓</span> Serverstatus-Anzeige eingebaut</li>
+      <li><span class="badge done">✓</span> Projektseite mit Downloadbutton erstellt</li>
+      <li><span class="badge done">✓</span> Roadmap <hinzu></hinzu>gefügt</li>
+      <li><span class="badge inprogress">🔧</span> User-Login-System vorbereiten</li>
+      <li><span class="badge planned">📌</span> Admin-Dashboard für Projekte</li>
+      <li><span class="badge planned">📌</span> API für externe Tools integrieren</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="section" id="contact">
+    <div class="card">
+        <h2>Kontakt</h2>
+        <p>Du willst dich mit mir connecten oder zusammenarbeiten?</p>
+        <p><b>Discord:</b> Sasnex</p>
+    </div>
+</div>
+
+</body>
+</html>
